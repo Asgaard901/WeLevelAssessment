@@ -11,7 +11,6 @@ class ATargetActor;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FResponseDelegate, bool, NewValue);
 
 // MetaTag exposes the reference to the node as output pin in BP
-// BlueprintType Exposes this class as a type that can be used for variables in Blueprints.
 UCLASS(BlueprintType, meta=(ExposedAsyncProxy = AsyncTask))
 class WELEVELASSESSMENT_API UAsyncTask_ListenForBooleanChange : public UBlueprintAsyncActionBase
 {
@@ -29,11 +28,11 @@ protected:
 	FResponseDelegate OnValueChanged;
 
 	// Creates the node
-	UFUNCTION(BlueprintCallable, Category = "Custom Async Node", meta = (BlueprintInternalUseOnly = "true"))
+	UFUNCTION(BlueprintCallable, Category = "Custom Async Nodes", meta = (BlueprintInternalUseOnly = "true"))
 	static UAsyncTask_ListenForBooleanChange* ListenForBooleanChange(ATargetActor* TargetActor);
 
-	// Unbinds from node's execution pin from target's delegate
-	UFUNCTION(BlueprintCallable, Category = "Custom Async Node")
+	// Unbinds node from target's delegate
+	UFUNCTION(BlueprintCallable, Category = "Custom Async Nodes")
 	void StopListening();
 
 	// Broadcasts the OnValueChanged delegate
